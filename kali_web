@@ -1,0 +1,5 @@
+# default folder and start file
+/var/www/html/index.html
+
+# start web server
+service apache2 start
