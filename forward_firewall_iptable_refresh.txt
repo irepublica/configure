@@ -1,6 +1,10 @@
-echo 1 > /proc/sys/net/ipv4/ip_forward
+# forward firewall and forwarding
 iptables --flush
 iptables --table nat --flush
 iptables --delete-chain
 iptables --table nat --delete-chain
 iptables -P FORWARD ACCEPT
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# redirect recevings from port 80 to port 10000
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
